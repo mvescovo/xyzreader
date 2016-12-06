@@ -199,7 +199,10 @@ public class ArticleDetailFragment extends Fragment implements
                             + mCursor.getString(ArticleLoader.Query.AUTHOR)
                             + "</font>"));
             bodyView.setText(Html.fromHtml(mCursor.getString(ArticleLoader.Query.BODY)));
-            Glide.with(this).load(mCursor.getString(ArticleLoader.Query.PHOTO_URL)).asBitmap()
+            Glide.with(this)
+                    .load(mCursor.getString(ArticleLoader.Query.PHOTO_URL))
+                    .asBitmap()
+                    .centerCrop()
                     .into(new ImageViewTarget<Bitmap>(mPhotoView) {
                 @Override
                 protected void setResource(Bitmap resource) {

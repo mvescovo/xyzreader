@@ -154,7 +154,10 @@ public class ArticleListActivity extends ActionBarActivity implements
                             DateUtils.FORMAT_ABBREV_ALL).toString()
                             + " by "
                             + mCursor.getString(ArticleLoader.Query.AUTHOR));
-            Glide.with(mContext).load(mCursor.getString(ArticleLoader.Query.THUMB_URL)).into(holder.thumbnailView);
+            Glide.with(mContext)
+                    .load(mCursor.getString(ArticleLoader.Query.THUMB_URL))
+                    .centerCrop()
+                    .into(holder.thumbnailView);
         }
 
         @Override
