@@ -9,6 +9,8 @@
 
     <string name="up">Up</string>
 
+    <string name="network_disconnected">Network Disconnected</string>
+
     <!-- list -->
     <string name="article_image_thumbnail">Thumbnail of article image.</string>
 

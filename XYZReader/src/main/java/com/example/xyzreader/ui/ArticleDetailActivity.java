@@ -9,6 +9,7 @@ import android.graphics.drawable.ColorDrawable;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v13.app.FragmentStatePagerAdapter;
+import android.support.v4.content.ContextCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.AppCompatActivity;
@@ -20,6 +21,7 @@ import android.view.WindowInsets;
 import com.example.xyzreader.R;
 import com.example.xyzreader.data.ArticleLoader;
 import com.example.xyzreader.data.ItemsContract;
+import com.michaelvescovo.android.utils.network.NetworkReceiver;
 
 /**
  * An activity representing a single Article detail screen, letting you swipe between articles.
@@ -29,15 +31,14 @@ public class ArticleDetailActivity extends AppCompatActivity
 
     private Cursor mCursor;
     private long mStartId;
-
     private long mSelectedItemId;
     private int mSelectedItemUpButtonFloor = Integer.MAX_VALUE;
     private int mTopInset;
-
     private ViewPager mPager;
     private MyPagerAdapter mPagerAdapter;
     private View mUpButtonContainer;
     private View mUpButton;
+    private NetworkReceiver mNetworkReceiver;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -106,6 +107,22 @@ public class ArticleDetailActivity extends AppCompatActivity
                 mSelectedItemId = mStartId;
             }
         }
+
+        mNetworkReceiver = new NetworkReceiver(this, getString(R.string.network_disconnected),
+                ContextCompat.getColor(this, R.color.theme_accent),
+                ContextCompat.getColor(this, R.color.white));
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        mNetworkReceiver.resume();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        mNetworkReceiver.destroy();
     }
 
     @Override

@@ -7,7 +7,9 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.Loader;
 import android.database.Cursor;
+import android.net.ConnectivityManager;
 import android.os.Bundle;
+import android.support.v4.content.ContextCompat;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.AppCompatActivity;
@@ -27,6 +29,7 @@ import com.example.xyzreader.R;
 import com.example.xyzreader.data.ArticleLoader;
 import com.example.xyzreader.data.ItemsContract;
 import com.example.xyzreader.data.UpdaterService;
+import com.michaelvescovo.android.utils.network.NetworkReceiver;
 
 /**
  * An activity representing a list of Articles. This activity has different presentations for
@@ -41,6 +44,7 @@ public class ArticleListActivity extends AppCompatActivity implements
     private SwipeRefreshLayout mSwipeRefreshLayout;
     private RecyclerView mRecyclerView;
     private Context mContext;
+    private NetworkReceiver mNetworkReceiver;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,6 +65,22 @@ public class ArticleListActivity extends AppCompatActivity implements
         if (savedInstanceState == null) {
             refresh();
         }
+
+        mNetworkReceiver = new NetworkReceiver(this, getString(R.string.network_disconnected),
+                ContextCompat.getColor(this, R.color.theme_accent),
+                ContextCompat.getColor(this, R.color.white));
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        mNetworkReceiver.resume();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        mNetworkReceiver.destroy();
     }
 
     private void refresh() {
