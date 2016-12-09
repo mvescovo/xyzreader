@@ -109,7 +109,7 @@ public class ArticleDetailActivity extends AppCompatActivity
         }
 
         mNetworkReceiver = new NetworkReceiver(this, getString(R.string.network_disconnected),
-                ContextCompat.getColor(this, R.color.theme_accent),
+                ContextCompat.getColor(this, R.color.colorAccent),
                 ContextCompat.getColor(this, R.color.white));
     }
 
