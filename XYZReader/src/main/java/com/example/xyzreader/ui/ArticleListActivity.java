@@ -157,7 +157,9 @@ public class ArticleListActivity extends AppCompatActivity implements
 
         @Override
         public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-            View view = getLayoutInflater().inflate(R.layout.list_item_article, parent, false);
+            View view = getResources().getBoolean(R.bool.multi_column)
+                    ? getLayoutInflater().inflate(R.layout.list_item_article_card, parent, false)
+                    : getLayoutInflater().inflate(R.layout.list_item_article_tile, parent, false);
             final ViewHolder vh = new ViewHolder(view);
             view.setOnClickListener(new View.OnClickListener() {
                 @Override
