@@ -1,5 +1,11 @@
 <resources>
     <!-- list -->
+    <dimen name="list_tile_padding">16dp</dimen>
+    <dimen name="list_tile_photo_margins">16dp</dimen>
+    <dimen name="list_card_title_bottom_padding">4dp</dimen>
+    <dimen name="list_photo_width">125dp</dimen>
+    <dimen name="list_photo_height">83.3dp</dimen>
+
     <dimen name="list_side_margin">4dp</dimen>
     <dimen name="list_toolbar_side_margin">0dp</dimen>
     <integer name="list_column_count">2</integer>
