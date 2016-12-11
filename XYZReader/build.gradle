@@ -21,5 +21,6 @@ dependencies {
     compile 'com.github.bumptech.glide:glide:3.7.0'
     compile 'com.android.support:design:25.0.1'
     compile 'com.michaelvescovo.android.utils:network:0.1.1'
+    compile 'com.android.support:percent:25.0.1'
     compile files('libs/volley.jar')
 }
