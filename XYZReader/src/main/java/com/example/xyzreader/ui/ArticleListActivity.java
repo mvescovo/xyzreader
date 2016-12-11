@@ -132,6 +132,7 @@ public class ArticleListActivity extends AppCompatActivity implements
             layoutManager = new LinearLayoutManager(mContext);
             android.support.v7.widget.DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(mContext, DividerItemDecoration.VERTICAL);
             mRecyclerView.addItemDecoration(dividerItemDecoration);
+            mRecyclerView.setBackgroundColor(ContextCompat.getColor(mContext, R.color.white));
         }
         mRecyclerView.setLayoutManager(layoutManager);
     }
