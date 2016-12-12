@@ -12,9 +12,9 @@ import android.support.v4.content.ContextCompat;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DividerItemDecoration;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.text.format.DateUtils;
 import android.view.View;
 import android.view.ViewGroup;
@@ -126,7 +126,7 @@ public class ArticleListActivity extends AppCompatActivity implements
         RecyclerView.LayoutManager layoutManager;
         if (getResources().getBoolean(R.bool.multi_column)) {
             int columnCount = getResources().getInteger(R.integer.list_column_count);
-            layoutManager = new StaggeredGridLayoutManager(columnCount, StaggeredGridLayoutManager.VERTICAL);
+            layoutManager = new GridLayoutManager(mContext, columnCount);
         } else {
             layoutManager = new LinearLayoutManager(mContext);
             android.support.v7.widget.DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(mContext, DividerItemDecoration.VERTICAL);
